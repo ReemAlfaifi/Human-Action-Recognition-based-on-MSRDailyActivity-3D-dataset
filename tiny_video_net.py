@@ -42,5 +42,5 @@ for split_idx in range (0, 5):
   checkpoint = tf.keras.callbacks.ModelCheckpoint(get_model_name(split_idx), monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
      
   model.summary()
-  history = model.fit(X_train_RGB, ytrain, epochs=500, validation_data=(xv, yv))
+  history = model.fit(Xt, yt, epochs=500, validation_data=(xv, yv))
 
