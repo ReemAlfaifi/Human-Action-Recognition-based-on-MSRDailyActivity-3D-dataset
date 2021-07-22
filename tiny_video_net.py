@@ -17,6 +17,9 @@ img_size=224
 num_ch=3 
 nb_classes=16
 
+def get_model_name(k):
+    return 'model_'+str(k)+'.hf5'
+  
 for split_idx in range (0, 5):
 
   xt, xv, yt, yv = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
