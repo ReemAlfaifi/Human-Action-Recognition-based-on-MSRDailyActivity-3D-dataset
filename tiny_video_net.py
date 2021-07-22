@@ -24,7 +24,7 @@ def pre_processing(x_train, x_val):
    x_train = xt.astype('float32')
    x_val = xv.astype('float32')
    mean_t=np.mean(x_train)
-   std_t=np.std(x_val)
+   std_t=np.std(x_train)
    x_train=x_train-mean_t
    x_train=x_train/std_t
    x_val=x_val-mean_t
@@ -33,7 +33,7 @@ def pre_processing(x_train, x_val):
 for split_idx in range (0, 5):
 
   xt, xv, yt, yv = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
-
+  xt, xv= pre_processing(xt, xv)
   xt= np.reshape(xt, (batch_train * num_frm, img_size, img_size, num_ch))
   xv= np.reshape(xv, (batch_val * num_frm, img_size, img_size, num_ch))
 
