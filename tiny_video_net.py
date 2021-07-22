@@ -27,7 +27,7 @@ for split_idx in range (0, 5):
   xt= np.reshape(xt, (batch_train * num_frm, img_size, img_size, num_ch))
   xv= np.reshape(xv, (batch_val * num_frm, img_size, img_size, num_ch))
 
-  yt= np.tile(yt,(nbatch_train*um_frm))
+  yt= np.tile(yt,(batch_train*um_frm))
   yv= np.tile(yv,(batch_val*num_frm))
   
   input_1 = tf.keras.layers.Input((img_size, img_size, num_ch))
