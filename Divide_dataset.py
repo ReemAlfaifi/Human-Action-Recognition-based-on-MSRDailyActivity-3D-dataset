@@ -141,5 +141,6 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        startidx_train=endidx_train2
        idx_st = endidxt2
     del X,  Y  # deleting entire array
+   
    return X_train, X_val, ytrain, yval  
 
