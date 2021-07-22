@@ -75,26 +75,7 @@ with open(filepath) as fp:
        line = fp.readline()
 
 videos_train_list = np.array(videos_train_list, dtype=np.float32)  
-np.save('X_train_SMR.npy', videos_train_list)
+np.save('X_SMR.npy', videos_train_list)
 
 train_classes_RGB = np.array(train_classes_RGB, dtype=np.int8)  
-np.save('y_train_SMR.npy', train_classes_RGB)
-
-filepath = 'val01.txt'
-
-videos_val_list=[]
-with open(filepath) as fp:
-  line = fp.readline()
-  while line: 
-       path=format(line.strip())
-       vid_name_folder, idx=path.split() 
-       video_path = fetch_ucf_video(vid_name_folder)
-       sample_video = load_video(video_path)
-       videos_val_list.append(sample_video)
-       val_classes_RGB.append(int(int (idx)-1))
-       line = fp.readline()    
-videos_val_list=np.array(videos_val_list, dtype=np.float32)  
-np.save('X_val_SMR.npy', videos_val_list)
-
-val_classes_RGB=np.array(val_classes_RGB, dtype=np.int8)  
-np.save('y_val_SMR.npy', val_classes_RGB)
+np.save('y_SMR.npy', train_classes_RGB)
