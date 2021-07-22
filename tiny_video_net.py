@@ -35,14 +35,14 @@ def pre_processing(x_train, x_val):
     
 for split_idx in range (0, 5):
 
-  xt, xv, yt, yv = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
-  y_true, y_pred= pre_processing(xt, xv)
+  x_true, x_pred, y_true, y_pred = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
+  x_true, x_pred= pre_processing(x_true, x_pred)
     
-  xt= np.reshape(xt, (batch_train * num_frm, img_size, img_size, num_ch))
-  xv= np.reshape(xv, (batch_val * num_frm, img_size, img_size, num_ch))
-
-  y_true= np.tile(yt,(num_frm))
-  y_pred= np.tile(yv,(num_frm))
+  x_true= np.reshape(x_true, (batch_train * num_frm, img_size, img_size, num_ch))
+  x_pred= np.reshape(x_pred, (batch_val * num_frm, img_size, img_size, num_ch))
+  
+  y_true= np.tile(y_true,(num_frm))
+  y_pred= np.tile(y_pred,(num_frm))
   
   y_true = np_utils.to_categorical(y_true, nb_classes)
   y_pred = np_utils.to_categorical(y_pred, nb_classes)
