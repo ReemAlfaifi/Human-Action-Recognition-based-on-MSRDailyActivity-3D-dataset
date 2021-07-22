@@ -42,6 +42,9 @@ for split_idx in range (0, 5):
   yt= np.tile(yt,(num_frm))
   yv= np.tile(yv,(num_frm))
   
+  yt = np_utils.to_categorical(yt, nb_classes)
+  yv = np_utils.to_categorical(yv, nb_classes)
+
   input_1 = tf.keras.layers.Input((img_size, img_size, num_ch))
   model = hub.KerasLayer('https://tfhub.dev/google/tiny_video_net/tvn1/1', trainable=False)
   
