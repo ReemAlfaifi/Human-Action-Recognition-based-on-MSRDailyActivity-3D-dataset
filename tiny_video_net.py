@@ -19,7 +19,17 @@ nb_classes=16
 
 def get_model_name(k):
     return 'model_'+str(k)+'.hf5'
-  
+
+def pre_processing(x_train, x_val):
+   x_train = xt.astype('float32')
+   x_val = xv.astype('float32')
+   mean_t=np.mean(x_train)
+   std_t=np.std(x_val)
+   x_train=x_train-mean_t
+   x_train=x_train/std_t
+   x_val=x_val-mean_t
+   x_val=x_val/std_t
+    
 for split_idx in range (0, 5):
 
   xt, xv, yt, yv = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
