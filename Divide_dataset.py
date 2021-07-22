@@ -12,7 +12,6 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
    
    X=np.load('X_train.npy')
    Y=np.load('y_train.npy')
-   print('Y Reem *5', Y)
    X_train=np.zeros((train_samples,img_depth, img_size,img_size,num_channels))
    X_val=np.zeros((val_samples, img_depth, img_size,img_size,num_channels))
  
