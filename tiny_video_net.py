@@ -32,17 +32,20 @@ def pre_processing(x_train, x_val):
    x_val=x_val-mean_t
    x_val=x_val/std_t
    return x_train, x_val
-    
+   
 for split_idx in range (0, 5):
-
+  
+  y_t=[]
+  y_p=[]
+    
   x_true, x_pred, y_true, y_pred = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
   x_true, x_pred= pre_processing(x_true, x_pred)
     
   x_true= np.reshape(x_true, (batch_train * num_frm, img_size, img_size, num_ch))
   x_pred= np.reshape(x_pred, (batch_val * num_frm, img_size, img_size, num_ch))
   for j in range (0, 49):
-    y_true.append(y_true)
-    y_pred.append(y_pred)
+    y_t.append(y_true)
+    y_p.append(y_pred)
          
   #y_true = np_utils.to_categorical(y_true, nb_classes)
   #y_pred = np_utils.to_categorical(y_pred, nb_classes)
@@ -61,5 +64,5 @@ for split_idx in range (0, 5):
   checkpoint = tf.keras.callbacks.ModelCheckpoint(get_model_name(split_idx), monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
      
   model.summary()
-  history = model.fit(x_true, y_true, epochs=500, validation_data=(x_pred, y_pred), batch_size=16)
+  history = model.fit(x_true, y_t, epochs=500, validation_data=(x_pred, y_p), batch_size=16)
 
