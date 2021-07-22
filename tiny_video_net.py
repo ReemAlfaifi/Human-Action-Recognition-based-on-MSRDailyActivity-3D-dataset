@@ -36,16 +36,16 @@ def pre_processing(x_train, x_val):
 for split_idx in range (0, 5):
 
   xt, xv, yt, yv = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
-  xt, xv= pre_processing(xt, xv)
+  y_true, y_pred= pre_processing(xt, xv)
     
   xt= np.reshape(xt, (batch_train * num_frm, img_size, img_size, num_ch))
   xv= np.reshape(xv, (batch_val * num_frm, img_size, img_size, num_ch))
 
-  yt= np.tile(yt,(num_frm))
-  yv= np.tile(yv,(num_frm))
+  y_true= np.tile(yt,(num_frm))
+  y_pred= np.tile(yv,(num_frm))
   
-  yt = np_utils.to_categorical(yt, nb_classes)
-  yv = np_utils.to_categorical(yv, nb_classes)
+  y_true = np_utils.to_categorical(y_true, nb_classes)
+  y_pred = np_utils.to_categorical(y_pred, nb_classes)
 
   input_1 = tf.keras.layers.Input((img_size, img_size, num_ch))
   model = hub.KerasLayer('https://tfhub.dev/google/tiny_video_net/tvn1/1', trainable=False)
@@ -62,5 +62,5 @@ for split_idx in range (0, 5):
   checkpoint = tf.keras.callbacks.ModelCheckpoint(get_model_name(split_idx), monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
      
   model.summary()
-  history = model.fit(xt, yt, epochs=500, validation_data=(xv, yv), batch_size=16)
+  history = model.fit(xt, y_true, epochs=500, validation_data=(xv, y_pred), batch_size=16)
 
