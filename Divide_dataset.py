@@ -20,13 +20,14 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
    yval=np.zeros((val_samples), dtype = int)
         
    if (num_split==0):
+    idx_st=0
+    idx_sv=0
+    startidx_train=0
+
     for i in range (0, 16):
-       idx_st=0
-       idx_sv=0
        endidx_t = idx_st+8
        endidx_v = idx_sv + 2
        
-       startidx_train=0
        endidx_train=startidx_train+8            
        endidx_val=endidx_train+2
        
@@ -40,15 +41,14 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        startidx_train=endidx_val
        idx_st = endidx_t
        idx_sv = endidx_v
-   del X,  Y  # deleting entire array
+    del X,  Y  # deleting entire array
    elif (num_split==1):
-     for i in range (0, 16):
-       idx_st=0
-       idx_sv=0
+    idx_st=0
+    idx_sv=0
+    startidx_train=0  
+    for i in range (0, 16):
        endidx_t = idx_st+8
        endidx_v = idx_sv + 2
-       
-       startidx_train=0            
        endidx_val=startidx_train+2
        endidx_train=endidx_val+8
        
@@ -61,18 +61,18 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        startidx_train=endidx_train
        idx_st = endidx_t
        idx_sv = endidx_v
-   del X,  Y  # deleting entire array
+    del X,  Y  # deleting entire array
        
    elif (num_split==2):
-     for i in range (0, 16):
-       idx_st=0
-       idx_sv=0
+    idx_st=0
+    idx_sv=0
+    startidx_train=0  
+    for i in range (0, 16):
        
        endidxt1 = idx_st+6
        endidx_v = idx_sv+2
        endidxt2 = endidxt1+2
        
-       startidx_train=0
        endidx_train1=startidx_train+6            
        endidx_val=endidx_train1+2
        endidx_train2=endidx_val+2
@@ -88,18 +88,18 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        startidx_train=endidx_train2
        idx_st = endidxt2
        idx_sv = endidx_v
-   del X,  Y  # deleting entire array
+    del X,  Y  # deleting entire array
        
    elif (num_split==3):
+    idx_st=0
+    idx_sv=0
+    startidx_train=0
     for i in range (0, 16):
-       idx_st=0
-       idx_sv=0
        
        endidxt1 = idx_st+4
        endidx_v = idx_sv+2
        endidxt2 = endidxt1+4
        
-       startidx_train=0
        endidx_train1=startidx_train+4            
        endidx_val=endidx_train1+2
        endidx_train2=endidx_val+4
@@ -115,17 +115,17 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        startidx_train=endidx_train2
        idx_st = endidxt2
        idx_sv = endidx_v
-   del X,  Y  # deleting entire array
+    del X,  Y  # deleting entire array
    elif (num_split==4):
-     for i in range (0, 16):
-       idx_st=0
-       idx_sv=0
+    idx_st=0
+    idx_sv=0
+    startidx_train=0
+    for i in range (0, 16):
        
        endidxt1 = idx_st+6
        endidx_v = idx_sv+2
        endidxt2 = endidxt1+2
        
-       startidx_train=0
        endidx_train1=startidx_train+6      
        endidx_val=endidx_train1+2
        endidx_train2=endidx_val+2
@@ -140,6 +140,6 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
                     
        startidx_train=endidx_train2
        idx_st = endidxt2
-   del X,  Y  # deleting entire array
+    del X,  Y  # deleting entire array
    return X_train, X_val, ytrain, yval  
 
