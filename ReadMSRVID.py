@@ -70,8 +70,8 @@ with open(filepath) as fp:
        line = fp.readline()
 
 videos_train_list = np.array(videos_train_list, dtype=np.float32)  
-np.save('X_train.npy', videos_train_list)
+np.save('X.npy', videos_train_list)
 
 train_classes_RGB = np.array(train_classes_RGB, dtype=np.int8)  
-np.save('y_train.npy', train_classes_RGB)
+np.save('Y.npy', train_classes_RGB)
 
