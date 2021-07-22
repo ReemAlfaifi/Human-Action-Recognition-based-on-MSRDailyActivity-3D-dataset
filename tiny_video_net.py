@@ -9,6 +9,8 @@ import Divide_dataset as div_data
 import tensorflow.compat.v1 as tf
 import tensorflow_hub as hub
 
+from keras.utils import np_utils
+
 total_samples=160
 batch_train=128
 batch_val=32
