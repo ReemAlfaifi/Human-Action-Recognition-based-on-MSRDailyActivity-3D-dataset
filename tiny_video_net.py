@@ -44,8 +44,8 @@ for split_idx in range (0, 5):
   yt= np.tile(yt,(num_frm))
   yv= np.tile(yv,(num_frm))
   
-  #yt = np_utils.to_categorical(yt, nb_classes)
-  #yv = np_utils.to_categorical(yv, nb_classes)
+  yt = np_utils.to_categorical(yt, nb_classes)
+  yv = np_utils.to_categorical(yv, nb_classes)
 
   input_1 = tf.keras.layers.Input((img_size, img_size, num_ch))
   model = hub.KerasLayer('https://tfhub.dev/google/tiny_video_net/tvn1/1', trainable=False)
@@ -57,7 +57,7 @@ for split_idx in range (0, 5):
   model = tf.keras.Model(inputs=input_1, outputs=output)
   
   model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), 
-  loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
+  loss=tf.keras.losses.categorical_crossentropy(from_logits=True), metrics=['accuracy'])
   
   checkpoint = tf.keras.callbacks.ModelCheckpoint(get_model_name(split_idx), monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
      
