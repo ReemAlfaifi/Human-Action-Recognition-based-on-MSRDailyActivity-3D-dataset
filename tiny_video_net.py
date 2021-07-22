@@ -41,7 +41,7 @@ for split_idx in range (0, 5):
   x_true= np.reshape(x_true, (batch_train , num_frm, img_size, img_size, num_ch))
   x_pred= np.reshape(x_pred, (batch_val , num_frm, img_size, img_size, num_ch))
 
-  input_1 = tf.keras.layers.Input((img_size, img_size, num_ch))
+  input_1 = tf.keras.layers.Input((num_frm, img_size, img_size, num_ch))
   model = hub.KerasLayer('https://tfhub.dev/deepmind/i3d-kinetics-400/1', trainable=False)
   
   x_1 = model(input_1)
