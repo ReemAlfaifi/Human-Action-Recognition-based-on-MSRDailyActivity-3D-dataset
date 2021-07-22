@@ -41,8 +41,8 @@ for split_idx in range (0, 5):
   x_true= np.reshape(x_true, (batch_train * num_frm, img_size, img_size, num_ch))
   x_pred= np.reshape(x_pred, (batch_val * num_frm, img_size, img_size, num_ch))
   
-  y_true= np.tile(y_true,(num_frm))
-  y_pred= np.tile(y_pred,(num_frm))
+  y_true= np.vstack([y_true]*num_frm)
+  y_pred= np.vstack([y_pred]*num_frm)
   
   #y_true = np_utils.to_categorical(y_true, nb_classes)
   #y_pred = np_utils.to_categorical(y_pred, nb_classes)
