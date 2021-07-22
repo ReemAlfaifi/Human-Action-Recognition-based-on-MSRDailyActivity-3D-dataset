@@ -46,7 +46,9 @@ for split_idx in range (0, 5):
   for j in range (0, 49):
     y_t.append(y_true)
     y_p.append(y_pred)
-         
+  
+  y_t=np.reshape(y_t, (128*49))   
+  y_p=np.reshape(y_p, (32, 49))
   #y_true = np_utils.to_categorical(y_true, nb_classes)
   #y_pred = np_utils.to_categorical(y_pred, nb_classes)
 
