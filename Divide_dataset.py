@@ -20,6 +20,7 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
    yval=np.zeros((val_samples), dtype = int)
         
    if (num_split==0):
+    for i in range (0, 16):
        idx_st=0
        idx_sv=0
        endidx_t = idx_st+8
@@ -41,6 +42,7 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        idx_sv = endidx_v
        del X,  Y  # deleting entire array
    elif (num_split==1):
+     for i in range (0, 16):
        idx_st=0
        idx_sv=0
        endidx_t = idx_st+8
@@ -62,6 +64,7 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        del X,  Y  # deleting entire array
        
    elif (num_split==2):
+     for i in range (0, 16):
        idx_st=0
        idx_sv=0
        
@@ -88,6 +91,7 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        del X,  Y  # deleting entire array
        
    elif (num_split==3):
+    for i in range (0, 16):
        idx_st=0
        idx_sv=0
        
@@ -113,6 +117,7 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
        idx_sv = endidx_v
        del X,  Y  # deleting entire array
    elif (num_split==4):
+     for i in range (0, 16):
        idx_st=0
        idx_sv=0
        
