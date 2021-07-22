@@ -13,11 +13,11 @@ def div_train_val (total_samples, num_split, img_depth, img_size, num_channels):
    X=np.load('X_train.npy')
    Y=np.load('y_train.npy')
 
-   X_train=np.zeros((train_samples,img_depth, img_size,img_size,num_channels), dtype=np.float32)
-   X_val=np.zeros((val_samples, img_depth, img_size,img_size,num_channels), dtype=np.float32)
+   X_train=np.zeros((train_samples,img_depth, img_size,img_size,num_channels))
+   X_val=np.zeros((val_samples, img_depth, img_size,img_size,num_channels))
 
-   ytrain=np.zeros((train_samples))
-   yval=np.zeros((val_samples))
+   ytrain=np.zeros((train_samples), dtype = int)
+   yval=np.zeros((val_samples), dtype = int)
         
    if (num_split==0):
        idx_st=0
