@@ -29,6 +29,7 @@ def pre_processing(x_train, x_val):
    x_train=x_train/std_t
    x_val=x_val-mean_t
    x_val=x_val/std_t
+   return x_train, x_val
     
 for split_idx in range (0, 5):
 
