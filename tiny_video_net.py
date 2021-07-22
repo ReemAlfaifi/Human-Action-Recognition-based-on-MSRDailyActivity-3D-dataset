@@ -46,7 +46,7 @@ for split_idx in range (0, 5):
   
   x_1 = model(input_1)
   
-  dropout=tf.keras.layers.Dropout(0.87)(x_1)dropout
+  dropout=tf.keras.layers.Dropout(0.87)(x_1)
   output=tf.keras.layers.Dense(nb_classes)(dropout)
   model = tf.keras.Model(inputs=input_1, outputs=output)
   
