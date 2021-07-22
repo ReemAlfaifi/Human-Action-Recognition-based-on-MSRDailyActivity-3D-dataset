@@ -34,9 +34,6 @@ def pre_processing(x_train, x_val):
    return x_train, x_val
    
 for split_idx in range (0, 5):
-  
-  y_t=[]
-  y_p=[]
     
   x_true, x_pred, y_true, y_pred = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
   x_true, x_pred= pre_processing(x_true, x_pred)
@@ -50,12 +47,12 @@ for split_idx in range (0, 5):
   x_1 = model(input_1)
   
   dropout=tf.keras.layers.Dropout(0.87)(x_1)dropout
-  output=tf.keras.layers.Dense(nb_classes, activation='softmax')(dropout)
+  output=tf.keras.layers.Dense(nb_classes)(dropout)
   model = tf.keras.Model(inputs=input_1, outputs=output)
   
-  model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False), metrics=['accuracy'])
+  model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
   checkpoint = tf.keras.callbacks.ModelCheckpoint(get_model_name(split_idx), monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
      
   model.summary()
-  history = model.fit(x_true, y_t, epochs=500, validation_data=(x_pred, y_p), batch_size=16)
+  history = model.fit(x_true,  y_true, epochs=500, validation_data=(x_pred, y_pred), batch_size=16)
 
