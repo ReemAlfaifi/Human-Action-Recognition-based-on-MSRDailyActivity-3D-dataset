@@ -53,7 +53,8 @@ for split_idx in range (0, 5):
   x_1 = model(input_1)
   
   dropout=tf.keras.layers.Dropout(0.87)(x_1)
-  output=tf.keras.layers.Dense(nb_classes)(dropout)
+  flatten=tf.keras.layers.Flatten(dropout)(dropout)
+  output=tf.keras.layers.Dense(nb_classes)(flatten)
   model = tf.keras.Model(inputs=input_1, outputs=output)
   
   model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
