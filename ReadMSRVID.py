@@ -71,7 +71,7 @@ with open(filepath) as fp:
 
 videos_train_list = np.array(videos_train_list, dtype=np.float32)  
 np.save('X_train.npy', videos_train_list)
-
+print(train_classes_RGB)
 train_classes_RGB = np.array(train_classes_RGB, dtype=np.int8)  
 np.save('y_train.npy', train_classes_RGB)
 
