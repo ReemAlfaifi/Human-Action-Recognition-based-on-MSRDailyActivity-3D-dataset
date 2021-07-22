@@ -39,8 +39,6 @@ for split_idx in range (0, 5):
   y_p=[]
     
   x_true, x_pred, y_true, y_pred = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
-  print('y_pred', y_pred)
-  print('y true',y_true)
   x_true, x_pred= pre_processing(x_true, x_pred)
     
   x_true= np.reshape(x_true, (batch_train * num_frm, img_size, img_size, num_ch))
