@@ -24,9 +24,10 @@ for split_idx in range (0, 5):
 
   xt, xv, yt, yv = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
 
-  xt=np.reshape(xt, (batch_train * num_frm, img_size, img_size, num_ch))
-  xv=np.reshape(xv, (batch_val * num_frm, img_size, img_size, num_ch))
-  
+  xt= np.reshape(xt, (batch_train * num_frm, img_size, img_size, num_ch))
+  xv= np.reshape(xv, (batch_val * num_frm, img_size, img_size, num_ch))
+  yt= yt*num_frm
+  yv= yv*num_frm
   input_1 = tf.keras.layers.Input((img_size, img_size, num_ch))
   model = hub.KerasLayer('https://tfhub.dev/google/tiny_video_net/tvn1/1', trainable=False)
   
