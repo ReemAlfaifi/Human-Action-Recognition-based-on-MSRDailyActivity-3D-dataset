@@ -32,7 +32,7 @@ def fetch_ucf_video(video):
     open(cache_path, "wb").write(data)
   return cache_path
 
-def load_video(vid_path, max_frames=30, resize=(32, 32)):
+def load_video(vid_path, max_frames=49, resize=(224, 224)):
         vidCap = cv2.VideoCapture(vid_path)
         framesPerSecond = vidCap.get(5)
         totalFrames = int (vidCap.get(cv2.CAP_PROP_FRAME_COUNT)) #total number of frames
