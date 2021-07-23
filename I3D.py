@@ -54,4 +54,4 @@ for split_idx in range (0, 5):
     prposed_model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001), loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
     checkpoint = tf.keras.callbacks.ModelCheckpoint(get_model_name(split_idx), monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
     prposed_model.summary()
-    history = model.fit(x_true,  y_true, epochs=500, validation_data=(x_pred, y_pred), batch_size=16, callbacks=[checkpoint], verbose=2)
+    history = prposed_model.fit(x_true,  y_true, epochs=500, validation_data=(x_pred, y_pred), batch_size=16, callbacks=[checkpoint], verbose=2)
