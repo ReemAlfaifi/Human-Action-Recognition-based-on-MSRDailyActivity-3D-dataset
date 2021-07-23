@@ -44,7 +44,7 @@ def proposed_model ():
    output=tf.keras.layers.Dense(nb_classes)(dropout)
    model = tf.keras.Model(inputs=input_1, outputs=output)
      
-   return model, x_true,  y_true, x_pred, y_pred
+   return model
 
 for split_idx in range (0, 5):        
     model=proposed_model()
