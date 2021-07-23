@@ -32,7 +32,7 @@ def pre_processing(x_train, x_val):
    x_val=x_val-mean_t
    x_val=x_val/std_t
    return x_train, x_val
-def model ()   
+def model ():
   for split_idx in range (0, 5):
     
      x_true, x_pred, y_true, y_pred = div_data.div_train_val (total_samples, split_idx, num_frm, img_size, num_ch)
