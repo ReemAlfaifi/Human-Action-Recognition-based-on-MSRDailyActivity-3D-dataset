@@ -1,6 +1,6 @@
 ####################################################
-# 	This code is written by Reem Al Faifi      #
-#	please cite my page when you use it        #
+# 	This code is written by Reem Al Faifi          #
+#	please cite my page when you use it            #
 ####################################################
 
 import numpy as np
